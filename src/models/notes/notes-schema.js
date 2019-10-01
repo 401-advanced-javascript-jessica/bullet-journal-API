@@ -15,9 +15,9 @@ const notesSchema = mongoose.Schema({
     type: String,
     required: false,
   },
-    author: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'users',
-    },
+  author: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'users',
+  },
 });
 
 module.exports = mongoose.model('notes', notesSchema);
