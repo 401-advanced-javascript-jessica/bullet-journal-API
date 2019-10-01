@@ -8,6 +8,9 @@ const notFound = require( './middleware/404.js' );
 
 const app = express();
 
+const apiRouter = require('./routes/api');
+const authRouter = require( './auth/router.js' );
+
 app.use(cors());
 
 app.use(express.json());
@@ -16,6 +19,9 @@ app.use(express.urlencoded({extended: true}));
 app.get('/', (request, response) => {
   response.status(200).send('App is Up!');
 });
+
+app.use(authRouter);
+app.use(apiRouter);
 
 app.use('/*', notFound);
 app.use(errorHandler);
